@@ -339,13 +339,13 @@
 # print(lst.index('hello',1,4))
 # 可以指定头和尾索引号进行查找
 
-# Chp 50 获取列表中指定元素
+# Chp 49 获取列表中指定元素
 # 使用指定索引，正向为正，逆向为负
 # lst=['hello','world',98,'hello']
 # print(lst[2])
 # print(lst[-3])
 
-# Chp 51 获取列表中的多个元素
+# Chp 50 获取列表中的多个元素
 # 使用切片操作
 # [start:stop:step]
 # 切片的结果是原列表的拷贝
@@ -357,7 +357,7 @@
 # 当步长为负数是，切片的第一个元素默认为列表的第一个元素
 # print(lst[::-1])
 
-# Chp 52 列表元素的判断和遍历
+# Chp 51 列表元素的判断和遍历
 # 使用in 和not in
 # lst=[10,20,'python','hello']
 # print(10 in lst)
@@ -366,7 +366,7 @@
 # for item in lst:
 #     print(item)
 
-# Chp 53 列表元素的增加操作
+# Chp 52 列表元素的增加操作
 # 使用方法append()在列表的末尾添加一个元素
 # lst=[10,20,'python','hello']
 # lst.append(100)
@@ -386,7 +386,7 @@
 # print(lst)
 # 从指定的位置开始，到指定的位置结束切除原本元素并添加新元素
 
-# Chp 54 列表元素的删除操作
+# Chp 53 列表元素的删除操作
 # 使用remove()方法删除一个指定的元素，元素重复时只删除第一个,不存在会报错
 # lst=[10,20,30,41,50,30]
 # lst.remove(30)
@@ -403,7 +403,7 @@
 # 使用语句del可以删除一个列表
 # del lst
 
-# Chp 55 列表元素的修改操作
+# Chp 54 列表元素的修改操作
 # 一次修改一个值
 # lst=[10,20,30,40,50,60]
 # lst[2]=100
@@ -412,7 +412,7 @@
 # lst[1:3]=[200300,400,300]
 # print(lst)
 
-# Chp 56 列表元素的排序操作
+# Chp 55 列表元素的排序操作
 # 使用方法sort()，可以将列表中所有元素默认按照从小到大的顺序进行排序，可以指定reverse=True，进行降序排序
 # lst=[20,30,40,50,98,2,64,22]
 # print(lst,id(lst))
@@ -427,7 +427,7 @@
 # newlist2=sorted(lst,reverse=True)
 # print(newlist2)
 
-# Chp 57 列表生成式
+# Chp 56 列表生成式
 # 意为生成列表的公式
 # 语法格式
 # [i*i(自定义变量的函数表达式） for i（自定义变量） in range(a,b)(生成长度)]
@@ -435,3 +435,287 @@
 # print(lst)
 # lst2=[i*2 for i in range(1,6)]
 # print(lst2)
+
+# Chp 57 什么是字典
+# 字典是Python内置的数据结构，是一个可变序列，使用{}定义
+# 以键值对的方式存储数据，字典是一个无序的序列
+# scores={'zhangsan':100,'lisi':98,'wangwu':45}
+# 在往字典中存储数据时，会经过哈希函数计算后得到在字典中的位置hash(key)
+# 字符串序列str即为不可变序列,可以作为key
+
+# Chp 58 字典的实现原理
+# 字典是根据key查找所对应的value的位置
+
+# Chp 59 字典的创建
+# 第一种：scores={'zhangsan':100,'lisi':98,'wangwu':45}
+# 第二种：dict(name='jack',age=20)
+# scores={'zhangsan':100,'lisi':98,'wangwu':45}
+# print(scores)
+# print(type(scores))
+# 创建空字典
+# dic={}
+
+# Chp 60 字典元素的获取
+# scores={'zhangsan':100,'lisi':98,'wangwu':45}
+# print(scores['zhangsan'],scores['chenliu'])获取不存在的元素会报错
+# print(scores.get('zhangsan'),scores.get('chenliu'))获取不存在的元素输出none
+# print(scores.get('maqi',99))99是查找到不存在的值时的默认输出值（替换none）
+
+# Chp 61 字典元素的常用操作
+# 使用in not in 判断值在字典中存不存在
+# scores={'zhangsan':100,'lisi':98,'wangwu':45}
+# print('zhangsan' in scores)
+# 使用del删除指定的键值对
+# del scores['zhangsan']
+# 使用clear()方法清空字典中所有的元素
+# scores.clear()
+# 新增元素
+# scores['chenliu']=98
+# 修改元素
+# scores['chenliu']=100
+# print(scores)
+
+# Chp 62 获取字典视图
+# 使用key()方法获取字典中所有的的key
+# scores={'zhangsan':100,'lisi':98,'wangwu':45}
+# keys=scores.keys()
+# print(keys)
+# print(type(keys))
+# 将所有的key所成的视图转换成列表
+# print(list(keys))
+# 使用value()方法获取字典中所有的值
+# values=scores.values()
+# print(values)
+# print(type(values))
+# 同样可以用list()转换为列表
+# 使用items()方法获取所有的键值对
+# items=scores.items()
+# print(items)
+# print(type(items))
+# 同样可以转换为列表，转换后列表中元素由元组组成
+
+# Chp 63 字典元素的遍历
+# scores={'zhangsan':100,'lisi':98,'wangwu':45}
+# for item in scores:
+#     print(item,scores[item],scores.get(item))
+
+# Chp 64 字典的特点
+# key值不允许重复,value可以重复
+# d={'name':'zhangsan','nikename':'zhangsan'}
+# print(d)
+# 字典中的元素是无序的(python 3.6 之后变成有序，尚未学习)
+# 字典可以根据需要动态伸缩
+# 字典会浪费较多的内存，是一种使用空间换时间的数据结构
+
+# Chp 65 字典生成式
+# items=['fruits','books','others']
+# prices=[96,78,85]
+# print(list(zip(items,prices)))
+# 使用内置函数zip()将可迭代的对象最为参数，将对象中对应的元素打包成一个元组，然后返回由这些元组组成的列表
+# 再通过字典生成式让这两个列表第一个作为键，第二个作为值生成字典
+# d={item:price for item,price in zip(items,prices)}
+# d2={item.upper():price for item,price in zip(items,prices)}将item换成大写
+# 还有方法lower()全部改小写，captitalize()首字母大写，title()每个单词首字母大写
+# print(d)
+# print(d2)
+# 方法二(弹幕版)
+# d=dict(zip(items,prices))
+# print(d)
+
+# Chp 66 什么是元组
+# 元组是Python内置的数据结构之一，是一个不可变序列
+# 可变序列 列表，字典
+# 不可变序列 元组，字符串
+
+# Chp 67 元组的创建方式
+# t=('python','hello',98)
+# 小括号可以省略，只包含一个元素的元组需要使用小括号和逗号
+# t=('python',)
+# print(t)
+# print(type(t))
+# 第二种方式
+# t2=tuple(('python','hello',98))
+# 空元组
+# t=()
+# t=tuple()
+
+# Chp 68 为什么要把元组设计成不可变序列
+# 在多任务环境下，同时操作对象时不需要加锁
+# 因此，在程序中尽量使用不可变序列
+# 注意：
+# 元组当中存储的是对象的引用
+# 如果元组当中对象本身是不可变对象，则不能再引用其他对象
+# 如果元组中对象是可变对象，则可变对象的引用不允许改变，但是数据可以改变
+# 意思是说，元组中每一个索引指向的对象都是固定不可更改的，但是可以对指向的对象进行更改
+# t=(10,[20,30],9)
+# print(t)
+# print(type(t))
+# print(t[0],type(t[0]),id(t[0]))
+# print(t[1],type(t[1]),id(t[1]))
+# print(t[2],type(t[2]),id(t[2]))
+# 尝试更改元组
+# t[1]=100
+# 报错
+# 尝试修改列表
+# t[1].append(100)
+# print(t,id(t[1]))
+
+# Chp 69 元组的遍历
+# t=('python','world',98)
+# 第一种获取方式，索引
+# print(t[1])
+# 第二种获取方式，遍历
+# for item in t:
+#     print(item)
+
+# Chp 70 什么是集合
+# python内置的数据结构，与列表，字典一样属于可变序列
+# 集合是没有value的字典
+# 存储地址也是通过哈希函数计算集合中的元素确定
+# 因此，定义类型与字典十分相似，性质也十分相似
+# s={'python','hello',98}
+# s1={2,3,44,5,5,4,6,2}
+# print(s1)
+# 集合中的元素也不允许重复
+# 第二种创建方式,使用内置函数set()
+# s2=set(range(6))
+# print(s2)
+# s3=set([1,5,6,9,'hello'])
+# print(s3,type(s3))
+# s4=set((1,5,4,6,954))
+# print(s4)
+# s5=set('python')
+# print(s5)
+# s6=set({1,2,55,55,3,6})
+# print(s6)
+# 创建空集合
+# s7=set()
+# 如果用{}定义是空字典
+# 集合的遍历
+# for item in s:
+#     print(item)
+
+# Chp 71 集合的相关操作
+# 集合元素的判断操作
+# 使用in 或者not in
+# s={10,20,30,40}
+# print(10 in s)
+# print(50 in s)
+# 集合元素的新增操作
+# 使用add()方法为集合中新增一个元素
+# s.add(80)
+# print(s)
+# 使用update()方法添加至少一个元素，括号内列表，元组，集合都可以
+# s.update([200,300,400])
+# print(s)
+# 集合元素的删除操作
+# 使用remove()方法一次可以删除一个元素，指定元素不存在时抛出异常
+# s.remove(10)
+# print(s)
+# 使用discard()方法，一次删除一个指定元素，不存在时不抛出异常
+# s.discard(200)
+# print(s)
+# 使用pop()方法，一次删除一个任意元素(随机)(据说删除元素是从栈顶开始删，即内存位置从小往大，与哈希算出来的内存位置有关)
+# s.pop()
+# print(s)
+# 使用clear()方法，清空集合
+# s.clear()
+# print(s)
+
+# Chp 72 集合间的关系
+# 两个集合是否相等可以使用==与!=判断
+# s1={10,20,30,40}
+# s2={30,40,20,10}
+# print(s1==s2)
+# 一个集合是否是另一个集合的子集，可以用方法issubset()判断
+# s1={10,20,30,40,50,60}
+# s2={10,20,30}
+# s3={10,20,70}
+# print(s2.issubset(s1))
+# print(s3.issubset(s1))
+# 一个集合是否是一个集合的超集，可以用方法issuperset()判断
+# print(s1.issuperset(s2))
+# 两个集合是否没有交集，可以用方法isdisjoint()判断,False就是有交集
+# print(s2.isdisjoint(s3))
+
+# Chp 73 集合的数学操作
+# 两个集合的交集
+# 交集
+# s1={10,20,30,40}
+# s2={20,30,40,50,60}
+# print(s1.intersection(s2))
+# print(s1 & s2)
+# 并集
+# print(s1.union(s2))
+# print(s1 | s2)
+# 差集
+# print(s1.difference(s2))
+# print(s1-s2)
+# 对称差集
+# print(s1.symmetric_difference(s2))
+# print(s1 ^ s2)
+
+# Chp 74 集合生成式
+# 将列表生成式中的[]改为{}即可
+# s={i for i in range(0,6)}
+# print(s)
+
+# Chp 75 字符串的创建与驻留机制
+# 字符串是Python当中的一种基本数据类型，是一个不可变的字符序列
+# 字符串驻留机制是指，python中对于相同字符串仅保留一份的方法
+# 当一个字符串被创建之后，再创建相同字符串时，python会将原本字符串的地址赋给新的变量，即后续变量的指针指向的是同一个地址(用C的方法解释)
+# a='python'
+# b="python"
+# c='''python'''
+# print(id(a),id(b),id(c))
+# 字符串驻留机制的几种模式(交互模式)(windows cmd或者python自带的idle)
+# 字符串的长度为0或者1时
+# 符合标识符的字符串(仅含有字母数字下划线的字符串)
+# 字符串只在编译时驻留，而非运行时
+# a='abc'
+# b='a'+'bc'
+# c=''.join(['a','bc'])
+# print(a is b)
+# print(a is c)
+# 因为a和b是在代码编译的时候就确定了为'abc'，而c是要运行程序后使用方法join()才会赋值为'abc'
+# 所以a,b会有驻留机制，c没有
+# [-5,256]之间的整数数字
+# 可以import sys，使用sys.intern()方法强制驻留(交互模式下)
+# import sys
+# a='abc%'
+# b='abc%'
+# print(a is b)
+# a=sys.intern(b)
+# print(a is b)
+# pycharm对于字符串进行了优化处理，都会驻留
+# 字符串驻留机制的优缺点
+# 当需要值相同的字符串时，可以直接从字符串池中拿来使用，避免频繁地创建和销毁，提升效率和节约内存
+# 在进行字符串拼接的时候建议使用join方法，因为join方法是先计算出所有字符的长度，然后再创建一次对象，效率要比+更高
+
+# Chp 76 字符串的查询操作
+# 字符串查询操作的方法
+# index()查找子串第一次出现的位置，如果不存在则抛出错误
+# rindex()查找子串最后一次出现的位置，如果查找的子串不存在时抛出错误
+# find()查找子串第一次出现的位置，不存在则返回-1
+# rfind()查找子串最后一次出现的位置，不存在则返回-1
+# s='hello,hello'
+# print(s.index('lo'))
+# print(s.find('lo'))
+# print(s.rindex('lo'))
+# print(s.rfind('lo'))
+# print(s.find('k'))
+
+# Chp 77 字符串的大小写转换操作
+# upper()方法所有字符转换为大写
+# lower()全部改小写
+# captitalize()第一个字符大写其他转为小写
+# title()每个单词首字符大写其他小写
+# swapcase()把所有小写转大，大写转小
+# s='hello,python'
+# a=s.upper()
+# print(a,id(a))
+# print(s,id(s))
+# a2=s.lower()
+# a3=s.capitalize()
+# a4=s.swapcase()
+# a5=s.title()
