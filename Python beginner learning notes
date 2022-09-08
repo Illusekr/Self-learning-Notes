@@ -1,5 +1,5 @@
 # By Illusekr/Ar1sa
-# Version 1.0.2 Updated at 8/25/2022 21:42
+# Version 1.0.3 Updated at 9/8/2022 23:54
 
 
 # #Chp 5 输出函数print
@@ -719,6 +719,7 @@
 # a3=s.capitalize()
 # a4=s.swapcase()
 # a5=s.title()
+# print(a2,a3,a4,a5)
 
 # Chp 78 字符串内容对齐操作
 # center()方法 居中对齐，第一个参数指定宽度，第二个参数指定填充符
@@ -1123,3 +1124,385 @@
 #     print('1')
 # stu1.show=show
 # stu1.show()
+
+# Chp 111 封装的实现方式
+# 封装可以提高程序的安全性
+# 将数据(属性)和行为(方法)包装到类对象中，在方法内部对属性进行操作，在类对象的外部调用方法
+# 这样无需关心方法内部的具体细节，从而隔离复杂度
+# 如果该属性不希望在类对象的外部访问，前面使用__
+# class Car:
+#     def __init__(self,brand):
+#         self.brand=brand
+#     def start(self):
+#         print('汽车启动')
+# car=Car('宝马')
+# car.start()
+# print(car.brand)
+# 封装的实现
+# class Student
+#     def __init__(self,age):
+#         self.set_age(age)
+#     def get_age(self):
+#         return self.__age
+# # 年龄不希望在类的外部被使用，所以加__
+#     def set_age(self,age):
+#         if 0<=age<=120:
+#             self.__age=age
+#         else:
+#             self.__age=18
+# 使用函数dir()可以获取类中的属性和方法列表
+# 继承提高代码的复用性
+# 多态提高程序的可扩展性和可维护性
+
+# Chp 112 继承及其实现方式
+# 格式：
+# class 子类类名(父类1,父类2.....):
+#     pass
+# python支持多继承，即多个父类
+# 如果没有继承任何类，则默认继承object
+# 使用super()调用父类的方法
+# class Person:
+#     def __init__(self,name,age):
+#         self.name=name
+#         self.age=age
+#     def info(self):
+#         print(self.name,self.age)
+# class Student(Person):
+#     def __init__(self,name,age,stu_no):
+#         super().__init__(name,age)
+#         self.stu_no=stu_no
+# stu=Student('张三',20,'1001')
+# stu.info()
+
+# Chp 113 方法重写
+# 在子类中重新对父类的方法编写以达成需求
+# class Person:
+#     def __init__(self,name,age):
+#         self.name=name
+#         self.age=age
+#     def info(self):
+#         print(self.name,self.age)
+# class Student(Person):
+#     def __init__(self,name,age,stu_no):
+#         super().__init__(name,age)
+#         self.stu_no=stu_no
+#     def info(self):
+#         super().info()
+#         print(self.stu_no)
+# stu=Student('张三',20,'1001')
+# stu.info()
+
+# Chp 114 object类
+# class Student:
+#     def __init__(self,name,age):
+#         self.name=name
+#         self.age=age
+#     def __str__(self):
+#         return '我的名字是{0}，今年{1}岁'.format(self.name,self.age)
+# stu=Student('张三',20)
+# print(dir(stu))
+# print(stu)
+
+# Chp 115 多态的实现、
+# 多态指的是即使不知道一个变量所引用的对象到底是什么类型，仍然可以通过这个变量调用方法
+# 在运行过程中根据变量所引用对象的类型，动态决定调用哪个对象中的方法
+# class Animal:
+#     def eat(self):
+#         print('动物要吃东西')
+# class Dog(Animal):
+#     def eat(self):
+#         print('狗吃肉')
+# class Cat(Animal):
+#     def eat(self):
+#         print('猫吃鱼')
+# class Human:
+#     def eat(self):
+#         print('人吃五谷杂粮')
+# def fun(obj):
+#     obj.eat()
+# fun(Cat())
+# fun(Dog())
+# fun(Animal())
+# fun(Human())
+
+# Chp 116 特殊属性
+# __dict__获得类对象或实例对象所绑定的所有属性和方法的字典
+# class A:
+#     pass
+# class B:
+#     pass
+# class C(A,B):
+#     def __init__(self,name,age):
+#         self.name=name
+#         self.age=age
+# # 创建c类的对象
+# x=C('Jack',20)
+# print(x.__dict__)
+# print(C.__dict__)
+# print(x.__class__)#输出了对象所属的类
+# print(C.__bases__) #输出c类父类类型的元组
+# print(C.__base__) #输出C类的首个父类(基类)
+# print(C.__mro__) #查看类的层次结构
+# print(A.__subclasses__()) #查看一个类的子类的列表
+
+# Chp 117 特殊方法
+# a=20
+# b=100
+# c=a+b
+# print(c)
+# d=a.__add__(b)
+# print(d)
+# class Student:
+#     def __init__(self,name):
+#         self.name=name
+#     def __add__(self, other):
+#         return self.name+other.name
+#     def __len__(self):
+#         return len(self.name)
+# stu1=Student('zhangsan')
+# stu2=Student('lisi')
+# s=stu1+stu2
+# # 在student类中重定义了__add__()特殊方法
+# print(s)
+# lst=[11,22,33,44]
+# print(len(lst))
+# print(lst.__len__())
+# # 重定义了__len__()特殊方法
+# print(len(stu1))
+
+# Chp 118 __new__()与__init__()
+# class Person(object):
+#     def __new__(cls, *args, **kwargs):
+#         print('__new__被调用执行了，cls的id值为{0}'.format(id(cls)))
+#         obj=super().__new__(cls)
+#         print('创建的对象的id记为{0}'.format(id(obj)))
+#         return obj
+#     def __init__(self,name,age):
+#         print('__init__被调用了，self的id值为{0}'.format(id(self)))
+#         self.name=name
+#         self.age=age
+# print('object这个类对象的id{0}'.format(id(object)))
+# print('person这个类对象的id{0}'.format(id(Person)))
+# p1=Person('张三',20)
+# print('p1这个实例对象的id{0}'.format(id(p1)))
+
+# Chp 119 类的赋值与浅拷贝
+# 变量的赋值操作：形成两个变量，但实际上指向同一个对象
+# class Cpu:
+#     pass
+# class Disk:
+#     pass
+# class Computer:
+#     def __init__(self,cpu,disk):
+#         self.cpu=cpu
+#         self.disk=disk
+# # 变量的赋值
+# cpu1=Cpu()
+# cpu2=cpu1
+# print(cpu1)
+# print(cpu2)
+# 浅拷贝是指对象包含的子对象内容不拷贝，因此源对象与拷贝对象会引用同一个子对象
+# disk=Disk()
+# computer=Computer(cpu1,disk)
+# import  copy
+# computer2=copy.copy(computer)
+# print(computer,computer.cpu,computer.disk)
+# print(computer2,computer2.cpu,computer2.disk)
+
+# Chp 120 深拷贝
+# 使用deepcopy()函数，递归拷贝对象中的子对象
+# computer3=copy.deepcopy(computer)
+# print(computer3,computer3.cpu,computer3.disk)
+
+# Chp 121 什么是模块
+# 模块英文为modules
+# 一个模块中可以包含N多个函数
+# 在python中一个扩展名为.py的文件就是一个模块
+# 使用模块的好处
+# 方便其他程序和脚本的导入并使用
+# 避免函数名和变量名冲突
+# 提高代码的可维护性
+# 提高代码的可复用性
+
+# Chp 122 自定义模块
+# 新建一个.py文件，名称尽量不要与python自带的标准模块名称相同
+# import  模块名 [as别名]
+# from 模块名称 import 函数/变量/类
+# import math
+# print(id(math))
+# print(type(math))
+# print(math)
+# print(math.pi)
+# print(dir(math))
+# from math import pi
+# 自定义模块导入需要勾上mark directory as sources root
+# import test2
+# 或者from  import
+
+# Chp 123 以主程序形式运行
+# 在每个模块的定义中都包括一个记录模块名称的变量__name__，程序可以检查该变量
+# 以确定他们在哪个模块中执行。如果一个模块不是被导入到其他程序中执行
+# 那么他可能在解释器的顶级模块中执行
+# 顶级模块中的name变量的值为__main__
+# 在一个模块中加入
+# if __name__=='__main__':
+# 则可以让其在以主程序运行的时候才运行if后的代码
+
+# Chp 124 python中的包
+# 包是一个分层次的目录结构，它将一组功能相近的模块组织在一个目录下
+# 作用是使代码规范，同时避免模块名称冲突
+# 包与目录的区别
+# 包含__init__.py文件的目录称为包
+# 目录里通常不包含这个文件
+# 包的导入
+# import 包名.模块名
+# 新建 python软件包
+# 导入带有包的模块时注意
+# import package(包名)
+# import moduel(模块名)
+# from package import moduel
+# from package.moduel import a
+
+# Chp 125 python中常用的内置模块
+# sys 与python解释器和环境操作相关的标准库
+# import sys
+# import time
+# print(sys.getsizeof(24))
+# 获取对象所占内存的大小（字节
+# time 与时间相关各种函数的标准库
+# import time
+# print(time.time())
+# # 输出秒数
+# print(time.localtime(time.time()))
+# 将秒数转换为年月日星期
+# os 提供了访问操作系统服务的标准库
+# calendar 提供与日期相关的各种函数的标准库
+# urllib 用于读取网上服务器的数据标准库
+# import urllib.request
+# print(urllib.request.urlopen('http://www.baidu.com').read())
+# 读取百度网页信息
+# json 用于使用json序列化和反序列化对象
+# re 用于在字符串中执行正则表达式匹配和替换
+# math 提供标准算数运算函数的标准库
+# demical 用于进行精确控制运算精度，有效位数和四舍五入操作的十进制运算
+# logging 提供了灵活的记录事件，错误，警告和调试信息等日志信息的功能
+
+# Chp 126 第三方模块的安装与使用
+# pip install 模块名 大法好
+# 导入 import 模块名
+
+# Chp 127 编码格式介绍
+# python解释器使用的是unicode
+# .py文件在磁盘上使用utf-8存储
+#encoding=GBK
+# print('你好')
+
+# Chp 128 文件读写的原理
+# 文件的读写俗称IO操作
+# python读写流程
+# 打开或新建文件
+# 读写文件
+# 关闭资源
+# 内置函数open()创建文件对象
+# file=open(filename [,mode,encoding])
+# file=open('a.txt','r')
+# print(file.readlines())
+# 读取文件中的内容输出一个列表
+# file.close()
+
+# Chp 129 常用的文件打开模式
+# file=open('a.txt','w')
+# file.write('helloworld')
+# file.close()
+# r 以只读模式打开文件，文件的指针将会放在文件的开头
+# w 以只写的模式打开文件，如果文件不存在则创建，如果文件存在则覆盖内容，文件指针在文件的开头
+# a 以追加模式打开文件。如果文件不存在则创建，文件指针在开头，如果存在则在文件末尾追加内容，文件指针在源文件末尾
+# b 以二进制方式打开文件，不能单独使用，需要和其他模式一起使用，如rb（用来读写照片，视频，音频等文件
+# + 以读写方式打开文件，不能单独使用
+
+# Chp 130 文件对象的常用方法
+# read([size])从文件中读取size个字节或者字符的内容，如果省略size则读取全部内容
+# readline()从文件中读取一行内容
+# readlines()把文本文件中每一行作为独立的字符串对象读取，返回一个字符串对象列表
+# write(str)将字符串内容写入文件
+# writelines(s_list)将字符串列表写入文本文件，不添加换行符
+# seek(offset[,whence])
+# 把文件指针移动到新的位置，offset表示相对于whence的位置
+# offset为正表示往结束方向移动 ，反之往开始方向移动
+# whence不同的值代表不同的含义
+# 0从文件头开始计算
+# 1从当前位置开始计算
+# 2从文件尾开始计算
+# tell()返回文件指针的当前位置
+# flush()把缓冲区的内容写入文件但不关闭文件
+# close()把缓冲区的内容写入文件，同时关闭文件，释放文件对象相关资源
+
+# Chp 131 with语句(上下文管理器)
+# with语句可以自动管理上下文资源，不论什么原因跳出with块，都能确保文件正确的关闭，以此释放资源
+# with open('a.txt','r') as file:
+# 对于实现了特殊方法__enter__(),__exit__()的类对象，称为该类对象遵守了上下文管理器协议
+# 这个类的实例对象称为上下文管理器
+# 进入时自动调用enter，退出时自动调用exit
+# with open('logo.png','rb') as src_file:
+#     with open('copy2logo.png','wb') as target_file:
+#         target_file.write(src_file.read())
+# 使用with语句复制文件
+
+# Chp 132 os模块的常用函
+# import os
+# os.system('notepad.exe')
+# os.system('calc.exe')
+# 通过系统命令打开记事本和计算器
+# os.startfile('D:\\CloudMusic\\cloudmusic.exe')
+# 直接打开exe文件
+# getcwd()返回当前的工作目录
+# print(os.getcwd())
+# listdir()返回指定路径下的文件和目录信息
+# print(os.listdir('../Objects'))
+# mkdir(path[,mode])创建目录
+# os.mkdir('new')
+# makedirs(path1/path2...[,mode])创建多级目录
+# rmdir(path)删除目录
+# os.rmdir('new')
+# removedirs(path1/path2....)删除多级目录
+# chdir(path)将path设为当前工作目录
+
+# Chp 133 os.path模块操作目录的相关函数
+# import os.path
+# print(os.path.abspath('1.py'))
+# abspath(path)用于获取文件或者目录的绝对路径
+# print(os.path.exists('Test.py'))
+# exsits(path)用于判断文件或者目录是否存在，如果存在返回True,不存在返回False
+# print(os.path.join('E:\\python','demo13.py'))
+# join(path,name)将目录与目录或者文件名拼接起来
+# print(os.path.split('E:\\python\\demo.py'))
+# print(os.path.splitext('python.py'))
+# splitext()分离文件名与扩展名
+# print(os.path.basename('C:\\Users\\Ilusio\\PycharmProjects\\Practise&Notes\\Test.py'))
+# basename(path)从一个目录中提取文件名
+# print(os.path.dirname('C:\\Users\\Ilusio\\PycharmProjects\\Practise&Notes\\Test.py'))
+# dirname(path)从一个路径中提取文件路径，不包括文件名
+# print(os.path.isdir('C:\\Users\\Ilusio\\PycharmProjects\\Practise&Notes'))
+# isdir(path)判断是否为路径
+# 列出指定目录下的所有的py文件
+# 案例
+# import os
+# path=os.getcwd()
+# lst=os.listdir(path)
+# for filename in lst:
+#     if filename.endswith('.py'):
+#         print(filename)
+# walk方法可以遍历该目录下包括子目录的所有文件
+# import os
+# path=os.getcwd()
+# lst_files=os.walk(path)
+# for dirpath,dirname,filename in lst_files:
+    # print(dirpath)
+    # print(dirname)
+    # print(filename)
+    # for dir in dirname:
+    #     print(os.path.join(dirpath,dir))
+    # for file in filename:
+    #     print(os.path.join(dirpath,file))
+
+# Final
