@@ -1,5 +1,5 @@
 # By Illusekr/Ar1sa
-# Version 1.0.3 Updated at 9/8/2022 23:54
+# Version 1.0.4 Updated at 10/20/2023 21:07
 
 
 # #Chp 5 输出函数print
@@ -1102,8 +1102,9 @@
 # Student.native_place='天津'
 # print(stu.native_place)
 # print(stu1.native_place)
-# 类方法
+# 类方法，访问类属性，可用于修改类属性
 # Student.cm()
+#静态方法，访问静态参数
 # Student.method()
 
 # Chp 110 动态绑定属性和方法
